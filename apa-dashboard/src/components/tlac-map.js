@@ -1,4 +1,5 @@
 import * as React from "react";
+const base_url = "/tlac";
 const TLACMap = (props) => (
   <svg
     viewBox="-221.3862 -119.8904 1078 945"
@@ -18,7 +19,7 @@ const TLACMap = (props) => (
     >
       <title>{"TLAC Campus Map"}</title>
     </image>
-    <a xlinkHref="building-4">
+    <a xlinkHref="tlac/building-4">
       <rect
         x={-154.966}
         y={205.371}
@@ -33,7 +34,7 @@ const TLACMap = (props) => (
         onclick="myFunction('building-4')"
       />
     </a>
-    <a xlinkHref="building-5">
+    <a xlinkHref="tlac/building-5">
       <rect
         x={-115.695}
         y={386.413}
@@ -47,7 +48,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="building-b">
+    <a xlinkHref="tlac/building-b">
       <rect
         x={18.69}
         y={383.711}
@@ -61,7 +62,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="building-1">
+    <a xlinkHref="tlac/building-1">
       <rect
         x={78.858}
         y={385.153}
@@ -75,7 +76,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="building-3">
+    <a xlinkHref="tlac/building-3">
       <rect
         x={126.055}
         y={9.817}
@@ -89,7 +90,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="building-2">
+    <a xlinkHref="tlac/building-2">
       <rect
         x={354.476}
         y={40.8}
@@ -103,7 +104,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="cattery">
+    <a xlinkHref="tlac/cattery">
       <rect
         x={100.475}
         y={249.765}
@@ -117,7 +118,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="dog-pot">
+    <a xlinkHref="tlac/dog-pot">
       <rect
         x={231.618}
         y={259.854}
@@ -131,7 +132,7 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="cat-barn">
+    <a xlinkHref="tlac/cat-barn">
       <rect
         x={586.998}
         y={464.615}

@@ -1,13 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import NavBar from './components/navbar.js';
+import Home from './pages/home.js';
+import TLAC from './pages/tlac.js';
+import Others from './pages/others.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <NavBar />
+      { /*
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/tlac">TLAC</Link>
+            </li>
+            <li>
+              <Link to="/others">Others</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      */ }
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tlac" element={<TLAC />} />
+        <Route path="/others" element={<Others />} />
+      </Routes>
+    </Router>
+    
   </React.StrictMode>
 );
 
