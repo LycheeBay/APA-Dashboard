@@ -8,10 +8,10 @@ class AnimalDataProcessor:
         self.locHist = pd.read_csv('../data/APA_AnimalsInKennel.csv')
 
     def get_kennel(self, num):
-        return self.locHist[self.locHist["kennelNumber"] == num].values.tolist()
+        return self.locHist[self.locHist["kennelNumber"] == num].to_dict(orient='records')[0]
     
     def get_kennel_range(self, startNum, endNum):
-        return self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].values.tolist()
+        return self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].to_dict(orient='records')
 
 DP = AnimalDataProcessor()
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def get_kennel_data(kennelNumber):
 def get_kennels_data(start, end):
     if start < 0 or end < 0 or start > end:
         return {'error': 'Invalid start or end number'}, 400
-    kennel_data = DP.get_kennels(start, end)
+    kennel_data = DP.get_kennel_range(start, end)
     if kennel_data == []:
         return {'error': 'No kennels occupied'}
     else:
