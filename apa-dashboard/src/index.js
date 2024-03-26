@@ -12,6 +12,7 @@ import NavBar from './components/navbar.js';
 import Home from './pages/home.js';
 import TLAC from './pages/tlac.js';
 import Others from './pages/others.js';
+import Building5 from './pages/building-5.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,6 +40,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/tlac" element={<TLAC />} />
         <Route path="/others" element={<Others />} />
+        <Route path="/tlac/building-5" element={<Building5 />} />
       </Routes>
     </Router>
     
