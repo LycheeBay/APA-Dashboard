@@ -16,6 +16,13 @@ class AnimalDataProcessor:
     def get_kennel_range(self, startNum, endNum):
         kennel_range_data = self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].fillna("none").to_dict(orient='records')
         return kennel_range_data
+    
+    def get_kennels_color(self, startNum, endNum):
+        # kennel_range_data = self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].fillna("none").to_dict(orient='records')
+        kennel_color_data = self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)][["kennelNumber", "volunteerColor"]].fillna("none").to_dict(orient='records')
+        for entry in kennel_color_data:
+            entry["volunteerColor"] = entry["volunteerColor"].split()[0]
+        return kennel_color_data
 
 DP = AnimalDataProcessor()
 app = Flask(__name__)
@@ -40,6 +47,16 @@ def get_kennels_data(start, end):
     if start < 0 or end < 0 or start > end:
         return {'status': 'failed - Invalid kennel number'}, 400
     kennel_data = DP.get_kennel_range(start, end)
+    if kennel_data == []:
+        return {'status': 'failed - Kennel not occupied'}
+    else:
+        return {'status': 'successful', 'data': kennel_data}
+    
+@app.route('/api/kennel-color/start=<int:start>&end=<int:end>', methods=['GET'])
+def get_kennels_color(start, end):
+    if start < 0 or end < 0 or start > end:
+        return {'status': 'failed - Invalid kennel number'}, 400
+    kennel_data = DP.get_kennels_color(start, end)
     if kennel_data == []:
         return {'status': 'failed - Kennel not occupied'}
     else:

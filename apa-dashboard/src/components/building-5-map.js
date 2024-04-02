@@ -1,12 +1,42 @@
-import * as React from "react";
-const Building5Map = (props) => (
-  <svg
+import React, { useEffect, useState } from "react";
+
+function getColor(number, colorData) {
+  var finalColor = "rgb(216, 216, 216)";
+  if (colorData.length > 0) {
+    colorData.forEach(item => {
+      if (item.kennelNumber === number) {
+        finalColor = item.color;
+      }
+    });
+  }
+  return finalColor;
+}
+
+function Building5Map() {
+  const [colorData, setColorData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`http://127.0.0.1:5000/api/kennel-color/start=1&end=24`);
+      const newData = await response.json();
+      // console.log(newData);
+      setColorData(newData['data']);
+    };
+  
+    fetchData();
+  }, []);
+
+  if (colorData.length > 0) {console.log(colorData[0]);}
+
+  // this is the faulting line
+  // console.log(getColor(5), colorData);
+
+  return (<svg
     viewBox="0 0 506.602 197.624"
     width={506.602}
     height={197.624}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    {...props}
   >
     <image
       width={507}
@@ -327,6 +357,6 @@ const Building5Map = (props) => (
         }}
       />
     </a>
-  </svg>
-);
+  </svg>);
+};
 export default Building5Map;
