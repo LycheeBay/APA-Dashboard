@@ -1,20 +1,25 @@
-from flask import Flask
+from flask import Flask, jsonify
 import pandas as pd
+from flask_cors import CORS
+
 
 class AnimalDataProcessor:
     locHist = pd.DataFrame()
 
     def __init__(self):
-        self.locHist = pd.read_csv('../data/APA_AnimalsInKennel.csv')
+        self.locHist = pd.read_csv('../data/APA_AnimalsInKennel_copy.csv')
 
     def get_kennel(self, num):
-        return self.locHist[self.locHist["kennelNumber"] == num].to_dict(orient='records')[0]
+        kennel_data = {column: value if pd.notnull(value) else "none" for column, value in kennel_data.items()}
+        return {column: value for column, value in kennel_data.items()}
     
     def get_kennel_range(self, startNum, endNum):
-        return self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].to_dict(orient='records')
+        kennel_range_data = self.locHist[(self.locHist["kennelNumber"] >= startNum) & (self.locHist["kennelNumber"] <= endNum)].fillna("none").to_dict(orient='records')
+        return kennel_range_data
 
 DP = AnimalDataProcessor()
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def get_animal_location_history():
@@ -23,22 +28,22 @@ def get_animal_location_history():
 @app.route('/api/kennel/<int:kennelNumber>', methods=['GET'])
 def get_kennel_data(kennelNumber):
     if kennelNumber < 0:
-        return {'error': 'Invalid kennel number'}, 400
+        return {'status': 'failed - Invalid kennel number'}, 400
     kennel_data = DP.get_kennel(kennelNumber)
     if kennel_data == []:
-        return {'error': 'Kennel not occupied'}
+        return {'status': 'failed - Kennel not occupied'}
     else:
-        return {'data': kennel_data}
+        return {'status': 'successful', 'data': kennel_data}
     
 @app.route('/api/kennel/start=<int:start>&end=<int:end>', methods=['GET'])
 def get_kennels_data(start, end):
     if start < 0 or end < 0 or start > end:
-        return {'error': 'Invalid start or end number'}, 400
+        return {'status': 'failed - Invalid kennel number'}, 400
     kennel_data = DP.get_kennel_range(start, end)
     if kennel_data == []:
-        return {'error': 'No kennels occupied'}
+        return {'status': 'failed - Kennel not occupied'}
     else:
-        return {'data': kennel_data}
+        return {'status': 'successful', 'data': kennel_data}
 
 if __name__ == '__main__':
     app.run()
