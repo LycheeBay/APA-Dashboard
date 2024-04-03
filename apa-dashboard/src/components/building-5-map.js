@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 
 function getColor(number, colorData) {
   var finalColor = "rgb(216, 216, 216)";
-  if (colorData.length > 0) {
+  if (colorData && colorData.length > 0) {
     colorData.forEach(item => {
       if (item.kennelNumber === number) {
-        finalColor = item.color;
+        finalColor = item.volunteerColor;
       }
     });
   }
+  // console.log(number, finalColor);
   return finalColor;
 }
 
@@ -26,7 +27,7 @@ function Building5Map() {
     fetchData();
   }, []);
 
-  if (colorData.length > 0) {console.log(colorData[0]);}
+  // if (colorData.length > 0) {console.log(colorData[0]);}
 
   // this is the faulting line
   // console.log(getColor(5), colorData);
@@ -52,7 +53,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(24, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -65,7 +66,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(23, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -78,7 +79,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(22, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -91,7 +92,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(21, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -104,7 +105,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(20, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -117,7 +118,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(19, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -130,7 +131,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(18, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -143,7 +144,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(17, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -156,7 +157,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(16, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -169,7 +170,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(15, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -182,7 +183,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(14, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -195,7 +196,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(13, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -208,7 +209,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(12, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -221,7 +222,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(11, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -234,7 +235,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(10, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -247,7 +248,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(9, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -260,7 +261,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(8, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -273,7 +274,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(7, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -286,7 +287,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(6, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -299,7 +300,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(5, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -312,7 +313,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(4, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -325,7 +326,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(3, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -338,7 +339,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(2, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
@@ -351,7 +352,7 @@ function Building5Map() {
         width={41.593}
         height={31.69}
         style={{
-          fill: "rgb(216, 216, 216)",
+          fill: getColor(1, colorData),
           stroke: "rgb(0, 0, 0)",
           fillOpacity: 0.4,
         }}
