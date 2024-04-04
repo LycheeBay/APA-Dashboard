@@ -2,6 +2,9 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 function NavBar() {
   return (
@@ -22,15 +25,32 @@ function NavBar() {
         <Nav.Item>
           <Nav.Link href="/others">Others</Nav.Link>
         </Nav.Item>
-
       </Nav>
+
       <Form>
-        <Row>
-          <Col>
-            <Form.Control placeholder="First name" />
+        <Row className="g-0">
+          <Col md={2} className="g-0">
+            <img src="/../data/apa-logo.png" alt="logo" />
           </Col>
-          <Col>
-            <Form.Control placeholder="Last name" />
+          <Col md={3} className="g-0">
+            <Form.Control placeholder="Disabled input" />
+          </Col>
+          <Col md={1} className="g-0">
+            <Button>Search</Button>
+          </Col>
+          <Col md={3} className="g-0">
+            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton>
+          </Col>
+          <Col md={3} className="g-0">
+            <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+            </DropdownButton>
           </Col>
         </Row>
       </Form>
