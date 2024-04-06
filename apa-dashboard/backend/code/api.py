@@ -7,7 +7,7 @@ class AnimalDataProcessor:
     locHist = pd.DataFrame()
 
     def __init__(self):
-        self.locHist = pd.read_csv('../data/APA_AnimalsInKennel_copy.csv')
+        self.locHist = pd.read_csv('../data/generated/APA_AnimalsInKennel_copy.csv')
 
     def get_kennel(self, num):
         kennel_data = {column: value if pd.notnull(value) else "none" for column, value in kennel_data.items()}

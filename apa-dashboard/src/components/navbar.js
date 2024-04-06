@@ -26,7 +26,6 @@ function NavBar() {
           <Nav.Link href="/others">Others</Nav.Link>
         </Nav.Item>
       </Nav>
-
       <Form>
         <Row className="g-0">
           <Col md={2} className="g-0">

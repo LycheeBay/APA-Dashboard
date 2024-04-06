@@ -29,6 +29,8 @@ for unique_id in tqdm.tqdm(unique_ids):
 curLoc.to_csv('../data/APA_CurVolunteerCategory.csv', index=False)
 """
 
+# this part of it is for organizing data by the animal, which doesn't work
+"""
 locHist = pd.read_csv('../data/APA_CurAnimalLocation.csv')
 locHist.dropna(subset=['locationTier4'], inplace=True)
 # print(locHist)
@@ -78,3 +80,43 @@ for id in animal["animalInternalID"]:
 print(animal)
 
 animal.to_csv('../data/APA_AnimalsInKennel_copy.csv', index=False)
+"""
+
+# organize by kennel
+locHist = pd.read_csv('../data/APA_AnimalLocationHistory.csv')
+locHist.dropna(subset=['locationTier4'], inplace=True)
+locHist = locHist[locHist['locationTier4'].str.startswith('Kennel')]
+unique_id1 = locHist['animalInternalID'].unique()
+
+behvHist = pd.read_csv('../data/APA_BehaviorCategoryHistory.csv')
+behvHist.dropna(subset=['behaviorCategory'], inplace=True)
+unique_id2 = behvHist['animalInternalID'].unique()
+
+voluHist = pd.read_csv('../data/APA_VolunteerCategoryHistory.csv')
+voluHist.dropna(subset=['volunteerCategory'], inplace=True)
+unique_id3 = voluHist['animalInternalID'].unique()
+
+unique_ids = list(set(unique_id1.tolist()) & set(unique_id2.tolist()) & set(unique_id3.tolist()))
+
+animal_list = pd.read_csv('../data/APA_Animals.csv')
+animal_ids = animal_list["animalInternalID"].tolist()
+
+animal = pd.DataFrame()
+animal["behaviorCategory"] = np.nan
+animal["kennelNumber"] = np.nan
+animal["volunteerColor"] = np.nan
+
+for id in unique_ids:
+    # print(id)
+    if id in animal_ids:
+        # print("tes")
+        animal = animal._append(animal_list.loc[animal_list['animalInternalID'] == id])
+        animal_locHist = locHist[locHist['animalInternalID'] == id].sort_values('dateStart').iloc[-1]['locationTier4'].extract(r'Kennel (\d+)').values[0][0]
+        animal_behvHist = behvHist[behvHist['animalInternalID'] == id].sort_values('dateStart').iloc[-1]['behaviorCategory'].values.tolist()[0]
+        animal_voluHist = voluHist[voluHist['animalInternalID'] == id].sort_values('dateStart').iloc[-1]['volunteerCategory'].values.tolist()[0]
+        animal.loc[animal["animalInternalID"] == id, 'behaviorCategory'] = animal_behvHist
+        animal.loc[animal["animalInternalID"] == id, 'kennelNumber'] = animal_locHist
+        animal.loc[animal["animalInternalID"] == id, 'volunteerColor'] = animal_voluHist
+
+
+animal.to_csv('../data/APA_ByKennelData.csv', index=False)

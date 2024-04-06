@@ -18,6 +18,7 @@ function Building5Map() {
 
   useEffect(() => {
     const fetchData = async () => {
+      // todo: use .env
       const response = await fetch(`http://127.0.0.1:5000/api/kennel-color/start=1&end=24`);
       const newData = await response.json();
       // console.log(newData);
