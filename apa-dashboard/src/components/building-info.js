@@ -2,7 +2,37 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {useState, useEffect} from 'react';
 
-// function filterData(data, 
+
+function isInRange(kennelNumber, buildingNum) {
+  if (buildingNum) {
+    const numberAfterDash = parseInt(buildingNum.split('-')[1]);
+    console.log(numberAfterDash);
+    console.log(process.env.BUILDING_END[numberAfterDash]);
+    return kennelNumber >= process.env.BUILDING_START[numberAfterDash] && kennelNumber <= process.env.BUILDING_END[numberAfterDash];
+  }
+  return true;
+}
+
+function filterData(data, color, location, keyword) {
+  let filteredData = data;
+  if (location) {
+    filteredData = filteredData.filter((data) => isInRange(data['kennelNumber'], location));
+  }
+  if (color) {
+    filteredData = filteredData.filter((data) => data['color'] === color);
+  }
+  if (keyword) {
+    filteredData = filteredData.filter((data) => {
+      for (let key in data) {
+      if (typeof data[key] === 'string' && data[key].includes(keyword)) {
+        return true;
+      }
+      }
+      return false;
+    });
+  }
+  return filteredData;
+}
 
 function BuildingInfo() {
   const [data, setData] = useState([]);
@@ -18,12 +48,17 @@ function BuildingInfo() {
     fetchData();
   }, []);
 
-  const currentUrl = window.location.href;
   const urlParams = new URLSearchParams(window.location.search);
   const keyword = urlParams.get('keyword');
   const color = urlParams.get('color');
+
   const location = urlParams.get('location');
   console.log(keyword);
+  console.log(color);
+  console.log(location);
+  console.log(data);
+
+  console.log(filterData(data, color, location, keyword));
 
   return (
     <div className="BuildingInfo">

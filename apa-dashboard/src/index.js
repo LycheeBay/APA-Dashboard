@@ -38,7 +38,7 @@ root.render(
       */ }
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tlac" element={<TLAC />} />
+        <Route path="/tlac/*" element={<TLAC />} />
         <Route path="/others" element={<Others />} />
         <Route path="/tlac/building-5/*" element={<Building5 />} />
       </Routes>
