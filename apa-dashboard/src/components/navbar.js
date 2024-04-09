@@ -23,7 +23,7 @@ function NavBar() {
       window.location.href = `${newUrl}/${url}`;
     }
     else {
-      window.location.href += `/${url}`;
+      window.location.href = `/${url}`;
     }
   };
 
