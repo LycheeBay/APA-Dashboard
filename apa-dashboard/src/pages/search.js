@@ -56,12 +56,12 @@ function Search() {
     console.log("Location: "+location);
     //console.log("Data: "+ data[0].age);
     console.log("Filtered Data from the functions: "+filterData(data, color, location, keyword));
-    // const filteredData = filterData(data, color, location, keyword);
+    const filteredData = filterData(data, color, location, keyword);
 
 
 return (
     <div>
-        { data ? data.map((item, index) => (
+        { filteredData ? filteredData.map((item, index) => (
             <div key={index}>
                 {item['kennelNumber']}: {item['volunteerColor']}
             </div>
