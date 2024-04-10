@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 
 
 function isInRange(kennelNumber, buildingNum) {
+    const building_start = [0, 101, 164, 210, 26, 1]
+    const building_end =[0, 154, 209, 265, 60, 24]
     if (buildingNum) {
       const numberAfterDash = parseInt(buildingNum.split('-')[1]);
-      console.log(numberAfterDash);
-      console.log(process.env.BUILDING_END[numberAfterDash]);
-      return kennelNumber >= process.env.BUILDING_START[numberAfterDash] && kennelNumber <= process.env.BUILDING_END[numberAfterDash];
+      console.log("Processed Building Number: " + numberAfterDash);
+      console.log(building_start[numberAfterDash]);
+      return kennelNumber >= building_start[numberAfterDash] && kennelNumber <= building_end[numberAfterDash];
     }
     return true;
 }
