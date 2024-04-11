@@ -104,48 +104,6 @@ const TLACMap = (props) => (
         transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
       />
     </a>
-    <a xlinkHref="tlac/cattery">
-      <rect
-        x={100.475}
-        y={249.765}
-        width={61.25}
-        height={95.836}
-        style={{
-          fill: "rgb(216, 216, 216)",
-          stroke: "rgb(0, 0, 0)",
-          fillOpacity: 0.5,
-        }}
-        transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
-      />
-    </a>
-    <a xlinkHref="tlac/dog-pot">
-      <rect
-        x={231.618}
-        y={259.854}
-        width={65.573}
-        height={63.41}
-        style={{
-          fill: "rgb(216, 216, 216)",
-          stroke: "rgb(0, 0, 0)",
-          fillOpacity: 0.5,
-        }}
-        transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
-      />
-    </a>
-    <a xlinkHref="tlac/cat-barn">
-      <rect
-        x={586.998}
-        y={464.615}
-        width={162.85}
-        height={44.676}
-        style={{
-          fill: "rgb(216, 216, 216)",
-          stroke: "rgb(0, 0, 0)",
-          fillOpacity: 0.5,
-        }}
-        transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"
-      />
-    </a>
   </svg>
 );
 export default TLACMap;

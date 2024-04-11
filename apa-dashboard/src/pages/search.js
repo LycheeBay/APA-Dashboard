@@ -1,4 +1,9 @@
+import TLACMap from "../components/tlac-map.js" ;
+import Building5Map from "../components/building-5-map.js" ;
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';
+import '../style/building.css';
 
 
 function isInRange(kennelNumber, buildingNum) {
@@ -60,18 +65,43 @@ function Search() {
     console.log("Filtered Data from the functions: "+filterData(data, color, location, keyword));
     const filteredData = filterData(data, color, location, keyword);
 
+    // {{urlParams.get('location') === "Building-5" }? <Building5Map /> : <div>Invalid location</div>}
+
 
 return (
     <div>
+      <div className="building-map">
+      {
+        location === "All" ? 
+          <TLACMap />
+         : 
+         <div>
+          {location === "Building-5" ? <Building5Map /> : <div>Invalid location</div>}
+         </div>
+      }
+      </div>
+      <div className="building-info">
         { filteredData ? filteredData.map((item, index) => (
-            <div key={index}>
-                {item['kennelNumber']}: {item['volunteerColor']}
-            </div>
+          <div key={index}>
+            <Card>
+              <Card.Title>Kennel {item['kennelNumber']}: {item['name']}</Card.Title>
+              <Card.Body>
+                <Card.Text>
+                  <p>Color: {item['volunteerColor']}</p>
+                  <p>DoB: {item['animalDoB']}</p>
+                  <p>Breed: {item['breed']}</p>
+                  <p>Animal ID: {item['animalInternalID']}</p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            
+          </div>
         )) : 
         <div>
-            No data found.
+          No data found.
         </div>
         }
+      </div>
     </div>
 );
 }

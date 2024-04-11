@@ -68,7 +68,7 @@ function NavBar() {
           </Col>
           <Col md={3} className="g-0">
             <DropdownButton id="location-dropdown" title="Location" onSelect={function(evt){console.log(evt); setBuilding(evt);}}>
-            <Dropdown.Item eventKey="">All</Dropdown.Item>
+            <Dropdown.Item eventKey="All">All</Dropdown.Item>
             <Dropdown.Item eventKey="Building-1">Building 1</Dropdown.Item>
             <Dropdown.Item eventKey="Building-2">Building 2</Dropdown.Item>
             <Dropdown.Item eventKey="Building-3">Building 3</Dropdown.Item>
