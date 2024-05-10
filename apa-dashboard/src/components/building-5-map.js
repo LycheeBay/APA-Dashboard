@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 
 function getColor(number, colorData) {
   var finalColor = "rgb(216, 216, 216)";
+  var flag = false;
   if (colorData && colorData.length > 0) {
     colorData.forEach(item => {
-      if (item.kennelNumber === number) {
+      if (item.kennelNumber === number && !flag) {
         finalColor = item.volunteerColor;
+        flag = true;
       }
     });
   }

@@ -1,6 +1,6 @@
 
 .building-map {
-    width: 70%;
+    width: 65%;
     float: left;
     margin: 0 auto; /* Horizontally center the element */
     padding: 3%;
@@ -9,7 +9,7 @@
 }
 
 .building-info {
-    width: 30%;
+    width: 25%;
     float: right;
     padding: 3%;
 }

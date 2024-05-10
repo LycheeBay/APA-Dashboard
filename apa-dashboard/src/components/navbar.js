@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {useState} from 'react';
+import apaLogo from '../data/apa-logo.png';
+//import '../styles/navbar.css';
 
 function NavBar() {
   const [color, setColor] = useState('All');
@@ -47,28 +49,29 @@ function NavBar() {
         </Nav.Item>
       </Nav>
       <Form>
-        <Row className="g-0">
-          <Col md={2} className="g-0">
-            <img src="../data/apa-logo.png" alt="logo" />
+        <Row xs="auto">
+          <Col>
+            <img src={apaLogo} alt="logo" height="75px" />
           </Col>
-          <Col md={3} className="g-0">
+          <Col>
             <Form.Control id="searchInput" placeholder="Enter a keyword" />
           </Col>
-          <Col md={1} className="g-0">
+          <Col>
             <Button onClick={handleSearch}>Search</Button>
           </Col>
-          <Col md={3} className="g-0">
-            <DropdownButton id="color-dropdown" title="Volunteer Category Color" onSelect={function(evt){console.log(evt); setColor(evt);}}>
-              <Dropdown.Item eventKey="">All</Dropdown.Item>
+          <Col>
+            <DropdownButton id="color-dropdown" title={color === "All" ? "Select Volunteer Color" : color} onSelect={function(evt){console.log(evt); setColor(evt);}}>
+              <Dropdown.Item eventKey="">All Colors</Dropdown.Item>
               <Dropdown.Item eventKey="Silver">Silver</Dropdown.Item>
               <Dropdown.Item eventKey="Red">Red</Dropdown.Item>
               <Dropdown.Item eventKey="Orange">Orange</Dropdown.Item>
               <Dropdown.Item eventKey="Pink">Pink</Dropdown.Item>
+              <Dropdown.Item eventKey="Purple">Purple</Dropdown.Item>
             </DropdownButton>
           </Col>
           <Col md={3} className="g-0">
-            <DropdownButton id="location-dropdown" title="Location" onSelect={function(evt){console.log(evt); setBuilding(evt);}}>
-            <Dropdown.Item eventKey="All">All</Dropdown.Item>
+            <DropdownButton id="location-dropdown" title={building === "All" ? "Select Location" : building} onSelect={function(evt){console.log(evt); setBuilding(evt);}}>
+            <Dropdown.Item eventKey="All">All Buildngs</Dropdown.Item>
             <Dropdown.Item eventKey="Building-1">Building 1</Dropdown.Item>
             <Dropdown.Item eventKey="Building-2">Building 2</Dropdown.Item>
             <Dropdown.Item eventKey="Building-3">Building 3</Dropdown.Item>

@@ -77,11 +77,23 @@ function Building5() {
               {data.length > 0 ? 
               <p>
                 Total Occupied Kennels: {KennelsCount(data)}
-                {kennelColorMap ? Object.entries(kennelColorMap).map(([key, value]) => (
-                  <p key={key}>
-                    {key}: {value}
-                  </p>
-                )) : null}
+                {kennelColorMap ? 
+                <div>
+                  <table style={{border: "1px solid rgb(0, 0, 0)", padding: "8px"}}>
+                    <tr>
+                      <th style={{border: "1px solid rgb(0, 0, 0)", padding: "8px"}}>Color</th>
+                      <th style={{border: "1px solid rgb(0, 0, 0)", padding: "8px"}}>Count</th>
+                    </tr>
+                    {Object.entries(kennelColorMap).map(([key, value]) => (
+                      <tr key={key}>
+                        <td style={{border: "1px solid rgb(0, 0, 0)", padding: "8px"}}>{key}</td>
+                        <td style={{border: "1px solid rgb(0, 0, 0)", padding: "8px"}}>{value}</td>
+                      </tr>
+                    ))}
+                  </table>
+                </div> : null}
+                Note: total number of color tallies may not match total number of occupied kennels,
+                as kennels may have multiple animals.
               </p> : 
               <p>Error</p>
               }

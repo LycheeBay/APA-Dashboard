@@ -25,7 +25,11 @@ function filterData(data, color, location, keyword) {
       filteredData = filteredData.filter((data) => isInRange(data.kennelNumber, location));
     }
     if (color !== "All") {
-      filteredData = filteredData.filter((data) => data.color === color);
+      filteredData = filteredData.filter((data) => {
+        // console.log("Data color: "+data.color);
+        const firstToken = data.volunteerColor.split(' ')[0];
+        return firstToken === color;
+      });
     }
     if (keyword !== "") {
       filteredData = filteredData.filter((data) => {
