@@ -51,7 +51,7 @@ function NavBar() {
       <Form>
         <Row xs="auto">
           <Col>
-            <img src={apaLogo} alt="logo" height="75px" />
+            <img src={apaLogo} alt="logo" height="55px" />
           </Col>
           <Col>
             <Form.Control id="searchInput" placeholder="Enter a keyword" />
